@@ -13,6 +13,6 @@ public class Mover : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		rb.AddForce (0, 0, speed * Time.deltaTime);
+		rb.velocity = new Vector3(0.0f, 0.0f, speed * Time.deltaTime);
 	}
 }
