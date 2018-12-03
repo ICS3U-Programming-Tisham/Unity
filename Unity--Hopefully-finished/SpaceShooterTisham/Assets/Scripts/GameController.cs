@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
+    public Text surviveText;
 
     private bool gameOver;
     private bool restart;
@@ -29,10 +30,12 @@ public class GameController : MonoBehaviour
         score = 0;
         UpdateScore();
         StartCoroutine(SpawnWaves());
+        surviveText.text = "Survive For Thirty Seconds";
     }
 
     void Update()
     {
+        
         if (restart)
         {
             if (Input.GetKeyDown(KeyCode.R))
