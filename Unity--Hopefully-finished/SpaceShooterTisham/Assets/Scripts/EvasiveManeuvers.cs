@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//This script wasn't used
 public class EvasiveManeuvers : MonoBehaviour
 {
 	public Boundary boundary;

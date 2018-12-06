@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    //Here's all the variables 
+
+    //This is to control spawning values (number, location, hazards used, etc.)
     public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
@@ -12,14 +15,17 @@ public class GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
 
+    //Used to control text to operate the way it should
     public Text scoreText;
     public Text restartText;
     public Text gameOverText;
 
+    //Used to calculate score and convert to text, and let the restart + game over text pop up at the right time
     private bool gameOver;
     private bool restart;
     private int score;
 
+    //Resets all the text, and starts the spawning process
     void Start()
     {
         gameOver = false;
@@ -31,6 +37,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(SpawnWaves());
     }
 
+    //When the game is over, we use this to restart with the "R" button
     void Update()
     {
         if (restart)
@@ -42,11 +49,14 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //Wave spaning code
     IEnumerator SpawnWaves()
     {
+        //Will wait for the amount of seconds you designate
         yield return new WaitForSeconds(startWait);
         while (true)
         {
+            //Spawns in hazards
             for (int i = 0; i < hazardCount; i++)
             {
                 GameObject hazard = hazards[Random.Range(0, hazards.Length)];
@@ -57,6 +67,7 @@ public class GameController : MonoBehaviour
             }
             yield return new WaitForSeconds(waveWait);
 
+            //If the game is over, shows restart text, enables the "R" button for restart, and stops spawning hazards
             if (gameOver)
             {
                 restartText.text = "Press 'R' for Restart";
@@ -66,17 +77,20 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //Adds score whenever a hazard is destroyed
     public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
         UpdateScore();
     }
-
+    
+    //Changes the score text
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
     }
 
+    //Activates when player dies, gameOver variable enables restart 
     public void GameOver()
     {
         gameOverText.text = "Game Over!";
