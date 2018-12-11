@@ -11,19 +11,23 @@ public class GameController : MonoBehaviour
     public GameObject[] hazards;
     public Vector3 spawnValues;
     public int hazardCount;
+    public float ElapsedTime;
     public float spawnWait;
     public float startWait;
     public float waveWait;
 
     //Used to control text to operate the way it should
     public Text scoreText;
+    public Text timeText;
     public Text restartText;
     public Text gameOverText;
+    public Text endGameText;
 
     //Used to calculate score and convert to text, and let the restart + game over text pop up at the right time
     private bool gameOver;
     private bool restart;
     private int score;
+    private bool endGame;
 
     //Resets all the text, and starts the spawning process
     void Start()
@@ -40,6 +44,8 @@ public class GameController : MonoBehaviour
     //When the game is over, we use this to restart with the "R" button
     void Update()
     {
+        ElapsedTime = Time.time;
+        timeText.text = "" + ElapsedTime;
         if (restart)
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -96,4 +102,5 @@ public class GameController : MonoBehaviour
         gameOverText.text = "Game Over!";
         gameOver = true;
     }
+
 }
