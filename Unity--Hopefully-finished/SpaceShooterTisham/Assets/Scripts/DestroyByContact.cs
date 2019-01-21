@@ -41,6 +41,7 @@ public class DestroyByContact : MonoBehaviour
 			Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
             //initiates GameOver in the GC script
 			gameController.GameOver();
+            gameController2.GameOver();
 		}
 		
         //Destroys both what the hazard hit and the hazard itself

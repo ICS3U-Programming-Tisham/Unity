@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    //Wave spaning code
+    //Wave spawning code
     IEnumerator SpawnWaves()
     {
         //Will wait for the amount of seconds you designate
@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
             //Spawns in hazards
             for (int i = 0; i < hazardCount; i++)
             {
+                //lets you determine hazard count
                 GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;

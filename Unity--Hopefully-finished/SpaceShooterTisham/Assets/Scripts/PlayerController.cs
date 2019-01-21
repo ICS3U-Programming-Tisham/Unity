@@ -22,16 +22,27 @@ public class PlayerController : MonoBehaviour
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
+    public GameObject shot2;
+    public Transform shotSpawn2;
+    public float fireRate2;
 
     private float nextFire;
-	void Update()
+    private float nextFire2;
+    void Update()
 	{
 	 if (Input.GetButton("Fire1") && Time.time > nextFire)
-        {
-            nextFire = Time.time + fireRate;
-            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		}
-	}
+            {
+                nextFire = Time.time + fireRate;
+                Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            }
+
+     if (Input.GetMouseButton(1) && Time.time > nextFire2)
+            
+            {
+                nextFire2 = Time.time + fireRate2;
+                Instantiate(shot2, shotSpawn2.position, shotSpawn2.rotation);
+            }
+    }
 
 	void FixedUpdate ()
 	{
